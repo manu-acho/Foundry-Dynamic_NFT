@@ -1,66 +1,65 @@
-## Foundry
+# Dynamic (Mood) NFT 
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Overview
+This project allows users to mint Non-Fungible Tokens (NFTs) that reflect their current mood, represented by SVG images. The project includes a smart contract for minting NFTs, a deployment script, and a testing suite. The metadata for each NFT is stored on-chain and encoded in base64.
+It also includes code for the deployment of a basic NFT that leverages IFPS for storage. 
 
-Foundry consists of:
+## Features
+- **Mood Representation**: Users can mint NFTs that represent either a "Happy" or "Sad" mood using SVG images.
+- **On-chain Metadata**: Metadata for each NFT is stored directly on the blockchain and includes mood-specific details.
+- **Interactivity**: Owners of the NFTs can flip the mood of their NFTs post-minting.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Prerequisites
+- Node.js (v14.x or newer recommended)
+- [Foundry](https://github.com/foundry-rs/foundry) for Solidity testing and deployment
+- An Ethereum wallet with Ether for deploying contracts (if deploying to a live network)
 
-## Documentation
+## Installation
+Clone the repository and install dependencies:
 
-https://book.getfoundry.sh/
+```bash
+git clone https://github.com/yourrepository/MoodNftProject.git
+cd MoodNftProject
+```
 
 ## Usage
+Deploying the Contract
 
-### Build
-
-```shell
-$ forge build
+To deploy the Mood NFT contract, use the provided script:
+```bash
+forge script script/DeployMoodNft.s.sol --rpc-url <RPC_URL> --private-key <YOUR_PRIVATE_KEY> --broadcast
 ```
+Replace <RPC_URL> and <YOUR_PRIVATE_KEY> with your Ethereum node RPC URL and private key.
 
-### Test
+## Minting an NFT
 
-```shell
-$ forge test
+After deployment, you can mint an NFT by interacting with the deployed contract. Here is how you can do it using a script or through a frontend interface connected to your contract.
+
+## Flipping the Mood of an NFT
+
+Owners of the NFT can change its mood by calling the flipMood function with the NFT's token ID.
+
+## Smart Contracts
+
+    1. MoodNft.sol: Defines the NFT structure and minting functionality.
+    2. DeployMoodNft.s.sol: Script for deploying the NFT contract.
+    3. MoodNftTest.sol: Contains tests for the functionality of the Mood NFT.
+
+## Running Tests
+
+Execute the following command to run tests:
+```bash
+forge test
 ```
+This will run unit tests defined in the test/ directory to ensure the contract functions as expected.
 
-### Format
+## Contributing
 
-```shell
-$ forge fmt
-```
+Contributions are welcome! Please feel free to submit pull requests or open issues to suggest improvements or add new features.
 
-### Gas Snapshots
+## License
 
-```shell
-$ forge snapshot
-```
+This project is licensed under the MIT License - see the LICENSE.md file for details.
 
-### Anvil
 
-```shell
-$ anvil
-```
 
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
